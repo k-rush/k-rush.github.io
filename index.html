@@ -4,5 +4,49 @@
 </head>
 
 <body>
-	<div id='CBAPlot'><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="consts">
+    <label for="devRate">Developer weekly rate</label><input id="devRate" type="number" value="2500"><br>
+    <label for="riskFactorCost">Risk factor cost / week</label><input id="riskFactorCost" type="number" value="500"><br>
+    <label for="deprecationWeek">Week to start deprecation of Loc Services</label><input id="deprecationWeek" type="number" value="24"><br>
+    <label for="weeksToPlot">Weeks to plot</label><input id="weeksToPlot" type="number" value="52">
+  </div>
+    <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Maintenance Cost / week</th>
+            <th>Dev effort (weeks)</th>
+            <th>Azure spend / week</th>
+            <th>Risk factor</th>
+            <th>Ext team cost / week</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Maintain Loc Services Webjob</td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+          </tr>
+          <tr>
+            <td>Migrate Webjob to Function</td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+          </tr>
+          <tr>
+            <td>Migrate all acom to standard Localization workflow</td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+            <td><input type="number"></td>
+          </tr>
+        </tbody>
+        </table>
+	<div id='plot'></div>
 </body>

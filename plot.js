@@ -1,5 +1,7 @@
-const devCostPerWeek = 2000;
+const devCostPerWeek = 3000;
 const riskFactorCost = 1000;
+const deprecationWeek = 24;
+const plotWeeks = 52;
 
 function calculateCost(devWeeks, maintenanceCostPerWeek, azureSpendPerWeek, riskFactor, externalTeamCostPerWeek, week)
 {
@@ -11,47 +13,51 @@ function calculateCost(devWeeks, maintenanceCostPerWeek, azureSpendPerWeek, risk
   return devCost + maintenanceCost + azureSpendCost + riskCost + externalTeamCost;
 }
 
-function f(week)
+function migrateWebjob(week)
 {
-  return calculateCost(6, 500, 100, 1, 100, week)
+  var weekNumberBeforeDepracation = Math.min(week, deprecationWeek);
+  var weekNumberAfterDeprecation = Math.max(0, week - deprecationWeek);
+  return calculateCost(3, 500, 100, 5, 100, weekNumberBeforeDepracation) + migrateLocServices(weekNumberAfterDeprecation);
 }
 
-function g(week)
+function maintainWebjob(week)
 {
-  return calculateCost(8, 0, 0, 5, 0, week)
+  var weekNumberBeforeDepracation = Math.min(week, deprecationWeek);
+  var weekNumberAfterDeprecation = Math.max(0, week - deprecationWeek);
+  return calculateCost(0, 1000, 500, 1, 100, weekNumberBeforeDepracation) + migrateLocServices(weekNumberAfterDeprecation);
 }
 
-function h(week)
+function migrateLocServices(week)
 {
-  return calculateCost(0, 1000, 500, 1, 100, week)
+  return calculateCost(12, 0, 0, 1, 0, week);
 }
 
-var xAxis = Array(24).fill().map((element, index) => index)
+var xAxis = Array(plotWeeks).fill().map((element, index) => index)
 
 var trace1 = {
   x: xAxis,
-  y: Array(24).fill().map((element, index) => f(index)),
+  y: Array(plotWeeks).fill().map((element, index) => migrateWebjob(index)),
   mode: 'lines',
-  name: 'Option 1'
+  name: 'Migrate webjob to function'
 };
 
 var trace2 = {
   x: xAxis,
-  y: Array(24).fill().map((element, index) => g(index)),
+  y: Array(plotWeeks).fill().map((element, index) => maintainWebjob(index)),
   mode: 'lines',
-  name: 'Option 2'
+  name: 'Maintain webjob'
 }
 
 var trace3 = {
   x: xAxis,
-  y: Array(24).fill().map((element, index) => h(index)),
+  y: Array(plotWeeks).fill().map((element, index) => migrateLocServices(index)),
   mode: 'lines',
-  name: 'Option 3'
+  name: 'Migrate to standard localization'
 }
 
 
 var data = [ trace1, trace2, trace3 ];
 
 window.addEventListener('load', (event) => {
-    Plotly.newPlot('CBAPlot', data);
+    Plotly.newPlot('plot', data);
 });
