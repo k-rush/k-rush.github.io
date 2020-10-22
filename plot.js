@@ -67,7 +67,7 @@ function renderPlot() {
         x: xAxis,
         y: Array(plotWeeks).fill().map((element, index) => migrateLocServices(index)),
         mode: 'lines',
-        name: 'Migrate to standard localization'
+        name: 'Migrate to standard localization workflow'
     }
 
     var data = [trace1, trace2, trace3];
