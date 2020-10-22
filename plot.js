@@ -52,4 +52,6 @@ var trace3 = {
 
 var data = [ trace1, trace2, trace3 ];
 
-Plotly.newPlot('CBAPlot', data);
+window.addEventListener('load', (event) => {
+    Plotly.newPlot('CBAPlot', data);
+}
