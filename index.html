@@ -18,37 +18,19 @@
                     <tr>
                         <th>Option</th>
                         <th>Dev effort (weeks)</th>
-                        <th>Maintenance Cost / week</th>
-                        <th>Azure spend / week</th>
-                        <th>Risk factor</th>
-                        <th>Ext team cost / week</th>
+                        <th>Maintenance, running cost/week after completion</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr id="maintain">
-                        <td>Maintain Loc Services Webjob</td>
-                        <td><input class="form-control dev-effort" type="number" value="0"></td>
-                        <td><input class="form-control maintenance" type="number" value="200"></td>
-                        <td><input class="form-control azure-spend" type="number" value="500"></td>
-                        <td><input class="form-control risk-factor" type="number" value="1"></td>
-                        <td><input class="form-control ext-cost" type="number" value="100"></td>
-                    </tr>
                     <tr id="migrate">
                         <td>Migrate Webjob to Function</td>
-
-                        <td><input class="form-control dev-effort" type="number" value="3"></td>
-                        <td><input class="form-control maintenance" type="number" value="50"></td>
-                        <td><input class="form-control azure-spend" type="number" value="0"></td>
-                        <td><input class="form-control risk-factor" type="number" value="5"></td>
-                        <td><input class="form-control ext-cost" type="number" value="100"></td>
+                        <td><input class="form-control dev-effort" type="number" value="6"></td>
+                        <td><input class="form-control cost-per-week" type="number" value="300"></td>
                     </tr>
                     <tr id="deprecate">
                         <td>Migrate all acom to standard Localization workflow</td>
-                        <td><input class="form-control dev-effort" type="number" value="12"></td>
-                        <td><input class="form-control maintenance" type="number" value="0"></td>
-                        <td><input class="form-control azure-spend" type="number" value="0"></td>
-                        <td><input class="form-control risk-factor" type="number" value="1"></td>
-                        <td><input class="form-control ext-cost" type="number" value="50"></td>
+                        <td><input class="form-control dev-effort" type="number" value="8"></td>
+                        <td><input class="form-control cost-per-week" type="number" value="300"></td>
                     </tr>
                 </tbody>
             </table>
@@ -60,15 +42,15 @@
             </div>
         </div>
         <div class="row">
-            <label for="risk-factor-cost" class="col-4 col-form-label">Risk factor cost / week</label>
+            <label for="current-cost-per-week" class="col-4 col-form-label">Current total cost per week of Loc Services</label>
             <div class="col-4">
-                <input id="risk-factor-cost" class="form-control" type="number" value="500">
+                <input id="current-cost-per-week" class="form-control" type="number" value="700">
             </div>
         </div>
         <div class="row">
             <label for="deprecation-week" class="col-4 col-form-label">Week to start deprecation of Loc Services</label>
             <div class="col-4">
-                <input id="deprecation-week" class="form-control" type="number" value="24">
+                <input id="deprecation-week" class="form-control" type="number" value="10">
             </div>
         </div>
             <div id='plot'></div>
